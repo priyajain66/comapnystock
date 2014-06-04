@@ -1,4 +1,12 @@
-import csv
+#Run this file from command prompt using the command 'python <filename>' where filename is the fully qualified path for input CSV file.
+
+#This module contains two implementation for the problem 'getmaxshare1' and 'getmaxshare2'.
+
+#The output of the problem will be in two file report1.csv and report2.csv which will be created when we run this script.
+
+#The location of the output files will be same as of this file.
+
+import csv.
 import sys
 
 class invalidFile(Exception):
@@ -21,7 +29,8 @@ class CompanyShares():
 		except Exception as e:
 			print "Unable to open file. Reason {0}".format(e)
 
-	#This method creates a dictionary which conatins the data of each company for each month of each year. This dictionary can be used for reporting 		#purpose.
+	'''This method creates a dictionary which contains the data of each company 
+	for each month of each year. This dictionary can be used for reporting purpose.'''
 	def FormatData(self):
 		_dict = {key : {} for key in self.mapping_dict.keys()} 
 		temp = {}
@@ -33,7 +42,7 @@ class CompanyShares():
 		return _dict
 			
 
-	#This method find the max price of shares for each company and stores the result in a dict.
+	#This method find the maximum price of shares for each company and stores the result in a dict.
 	def getMaxShare1(self): 
 		max_share = {key : 0 for key in self.mapping_dict.keys()}
 		max_share_year = {key : '' for key in self.mapping_dict.keys()}
@@ -48,7 +57,7 @@ class CompanyShares():
 			
 		return max_share_year
 	
-	#This method find the max price of shares for each company and stores the result in a dict. This method uses the csv module.
+	#This method find the maximum price of shares for each company and stores the result in a dict. This method uses the csv module.
 	def getMaxShare2(self):
 		try:
 			with open(self.file_name) as f:
@@ -120,10 +129,7 @@ class CompanyShares():
 if __name__ == "__main__":
 	try :
 		share = CompanyShares(sys.argv[1])
-		share.getReport1("report11.csv") #First implementation : No in-built module is used to produce the desired result.
-		share.getReport2("report22.csv") #second implementation : module named 'CSV' is used to produce the desired result.
+		share.getReport1("report1.csv") #First implementation : No in-built module is used to produce the desired result.
+		share.getReport2("report2.csv") #second implementation : module named 'CSV' is used to produce the desired result.
 	except Exception as e:
-		print "Error Occured. Reason {0}".format(e)
-				
-			
-					
+		print "Error Occurred. Reason {0}".format(e)				

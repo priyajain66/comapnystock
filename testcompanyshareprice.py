@@ -1,3 +1,7 @@
+#This is a test file which unit test the method getMaxShare1 and getMaxShare2 of the module priyajain3_5.
+
+#To run this file we need priyajain3_5.py to be present at the same location.
+
 import unittest
 import sys
 from priyajain3_5 import CompanyShares, invalidFile
@@ -12,8 +16,11 @@ class TestCompanySharePrice(unittest.TestCase):
 					'Company-C' : {'max_price' : 917, 'period' : '1991_Feb'},
 					'Company-D' : {'max_price' : 971, 'period' : '1991_Apr'},\
 					'Company-E' : {'max_price' : 870, 'period' : '1990_Jul'}}
+		
 		self.file = open('C:\\Users\\Om\\Desktop\\correct.csv')
+		
 		self.share_correct_file = CompanyShares('C:\\Users\\Om\\Desktop\\correct.csv')
+		
 		self.expected_mapping_dict = {'Company-A':2, 'Company-B':3, 'Company-C':4, 'Company-D':5, 'Company-E':6}
 
 
