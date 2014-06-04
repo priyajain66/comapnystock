@@ -17,9 +17,9 @@ class TestCompanySharePrice(unittest.TestCase):
 					'Company-D' : {'max_price' : 971, 'period' : '1991_Apr'},\
 					'Company-E' : {'max_price' : 870, 'period' : '1990_Jul'}}
 		
-		self.file = open('C:\\Users\\Om\\Desktop\\correct.csv')
+		self.file = open('D:\\priya\\project\\comapnystock\\correct.csv') #Change the file path where correct.csv is saved on local
 		
-		self.share_correct_file = CompanyShares('C:\\Users\\Om\\Desktop\\correct.csv')
+		self.share_correct_file = CompanyShares('D:\\priya\\project\\comapnystock\\correct.csv') #Change the file path where correct.csv is saved on local
 		
 		self.expected_mapping_dict = {'Company-A':2, 'Company-B':3, 'Company-C':4, 'Company-D':5, 'Company-E':6}
 
