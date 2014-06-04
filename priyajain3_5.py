@@ -1,12 +1,14 @@
-#Run this file from command prompt using the command 'python <filename>' where filename is the fully qualified path for input CSV file.
+#Run this file from command prompt using the command 'python <filename1.py> <filename2.csv>' where filename is the fully qualified path for input CSV file.
+
+#Example D:\priya\Python27>python D:\\priya\\project\\comapnystock\\priyajain3_5.py D:\\priya\\project\\comapnystock\\correct.csv
 
 #This module contains two implementation for the problem 'getmaxshare1' and 'getmaxshare2'.
 
 #The output of the problem will be in two file report1.csv and report2.csv which will be created when we run this script.
 
-#The location of the output files will be same as of this file.
+#The location of the output files will be present working directory.
 
-import csv.
+import csv
 import sys
 
 class invalidFile(Exception):
@@ -88,21 +90,27 @@ class CompanyShares():
 	This method calls the getMaxShare1() of this class.'''
 	
 	def getReport1(self, file_name):
-		max_price_year_dict = self.getMaxShare1()
-		_file = open(file_name, 'w')
-		for key in max_price_year_dict .keys():		
-			_file.write("%s got maximum share price $ %s in %s\n" %(key, max_price_year_dict[key]['max_price'], max_price_year_dict[key]['period']))
-		_file.close()
+		try:
+			max_price_year_dict = self.getMaxShare1()
+			_file = open(file_name, 'w')
+			for key in max_price_year_dict .keys():		
+				_file.write("%s got maximum share price $ %s in %s\n" %(key, max_price_year_dict[key]['max_price'], max_price_year_dict[key]['period']))
+			_file.close()
+		except Exception as msg:
+			print "Error Occurred while opening the file <{0}>. Reason {1}".format(file_name, msg)
 
 	'''This method creates a new file and write the maximum price of the company in that file. 
 	This method calls the getMaxShare2() of this class.'''
 	
 	def getReport2(self, file_name):
 		max_price_year_dict = self.getMaxShare2()
-		_file = open(file_name, 'w')
-		for key in max_price_year_dict .keys():		
-			_file.write("%s got maximum share price $ %s in %s\n" %(key, max_price_year_dict[key]['max_price'], max_price_year_dict[key]['period']))
-		_file.close()
+		try:
+			_file = open(file_name, 'w')
+			for key in max_price_year_dict .keys():		
+				_file.write("%s got maximum share price $ %s in %s\n" %(key, max_price_year_dict[key]['max_price'], max_price_year_dict[key]['period']))
+			_file.close()
+		except Exception as msg:
+			print "Error Occurred while opening the file <{0}>. Reason {1}".format(file_name, msg)
 
 
 	#This method returns the list of strings which are row in the file separated by \n
@@ -132,4 +140,7 @@ if __name__ == "__main__":
 		share.getReport1("report1.csv") #First implementation : No in-built module is used to produce the desired result.
 		share.getReport2("report2.csv") #second implementation : module named 'CSV' is used to produce the desired result.
 	except Exception as e:
-		print "Error Occurred. Reason {0}".format(e)				
+		print "Error Occurred in main. Reason {0}".format(e)				
+		
+		
+		
